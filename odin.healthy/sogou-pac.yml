@@ -1,0 +1,10 @@
+maintainers:
+  - manguijie@sogou-inc.com
+  - liyongxin@sogou-inc.com
+  - gaozhenan@sogou-inc.com
+plugin: deploy_harbor
+repo: https://git.sogou-inc.com/iweb/ime-android-upgrade.git
+image: docker-reg.sogou-inc.com/ime_server/ime-android-upgrade
+tags:
+  - '${GIT_TAG}'
+  - latest

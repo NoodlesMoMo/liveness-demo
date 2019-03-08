@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+     containers:
+      - name: service
+        image: guijiedocker/kbtest:myapp-v2
+        ports:
+        - containerPort: 12345
+
+      - name: liveness
+        image: guijiedocker/healthy:healthy-v4
+        livenessProbe:
+            httpGet:
+                path: /healthy
+                port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3
